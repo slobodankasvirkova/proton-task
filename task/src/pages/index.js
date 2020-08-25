@@ -1,9 +1,31 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 export default function Home() {
+
+  const [data, setData] = useState({});
+
+  useEffect(async () => {
+    const myHeaders = new Headers();
+
+    myHeaders.append('Content-Type', 'application/json;charset=utf-8');
+    myHeaders.append('x-pm-appversion', 'Other');
+    myHeaders.append('x-pm-apiversion', '3');
+    myHeaders.append('Accept', 'application/vnd.protonmail.v1+json');
+
+    const myInit = {
+      method: 'GET',
+      headers: myHeaders,
+      mode: 'cors',
+      cache: 'default'
+    };
+
+    const response = await fetch(`https://api.protonmail.ch/payments/plans?EUR`, myInit).then(res => res.json());
+    setData(response);
+  }, []);
+  console.log(data);
   return (
     <div>
-        <h5>Plans&Prices</h5>
-        <div className="container">
+      <h5>Plans&Prices     {data.Code}</h5>
+      <div className="container">
         <div class="column">
           <ul class="price">
             <li class="header">FREE</li>
@@ -16,7 +38,7 @@ export default function Home() {
             <li class="grey"><a href="#" class="button">Sign Up</a></li>
           </ul>
         </div>
-        
+
         <div class="column plus">
           <ul class="price">
             <li class="header">PLUS</li>
@@ -30,7 +52,7 @@ export default function Home() {
             <li class="grey"><a href="#" class="button">Sign Up</a></li>
           </ul>
         </div>
-        
+
         <div class="column professional">
           <ul class="price">
             <li class="header">PROFESSIONAL</li>
@@ -43,8 +65,8 @@ export default function Home() {
             <li><div className="arrow">&#8594;</div>   ProtonVPN (Optional)*</li>
             <li class="grey"><a href="#" class="button">Sign Up</a></li>
           </ul>
-          </div>
-          <div class="column visionary">
+        </div>
+        <div class="column visionary">
           <ul class="price">
             <li class="header">VISIONARY</li>
             <li class="grey">$ 24/mo</li>
@@ -57,9 +79,9 @@ export default function Home() {
             <li class="visionary"><div className="arrow">&#8594;</div>   Includes ProtonVPN</li>
             <li class="grey"><a href="#" className="button">Sign Up</a></li>
           </ul>
-          </div>
-          </div>
-          </div>
+        </div>
+      </div>
+    </div>
 
   )
 }
