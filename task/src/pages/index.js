@@ -18,13 +18,48 @@ export default function Home() {
       cache: 'default'
     };
 
-    const response = await fetch(`https://api.protonmail.ch/payments/plans?EUR`, myInit).then(res => res.json());
+    const response = await fetch('https://api.protonmail.ch/payments/plans?Currency=EUR', myInit).then(res => res.json());
     setData(response);
   }, []);
-  console.log(data);
+ /* const requestPlans = async (currency='EUR') => {
+    const myHeaders = new Headers();
+
+    myHeaders.append('Content-Type', 'application/json;charset=utf-8');
+    myHeaders.append('x-pm-appversion', 'Other');
+    myHeaders.append('x-pm-apiversion', '3');
+    myHeaders.append('Accept', 'application/vnd.protonmail.v1+json');
+
+    const myInit = {
+        method: 'GET',
+        headers: myHeaders,
+        mode: 'cors',
+        cache: 'default'
+    };
+
+    const response = await fetch(`https://api.protonmail.ch/payments/plans?${currency}`, myInit).then(res=>res.json());
+ 
+};*/
+
+console.log(data)
   return (
     <div>
-      <h5>Plans&Prices     {data.Code}</h5>
+      <h5>Plans&Prices</h5>
+      <div>
+            <select>
+                <option value="Monthly" >Monthly</option>
+                <option value="Annualy">Annualy</option>
+                <option value="2years">2 years</option>
+            </select>
+        </div>
+        <div>
+            <select>
+                <option value="EUR" onClick >EUR</option>
+                <option value="CHF" onClick >CHF</option>
+                <option value="USD" onClick >USD</option>
+            </select>
+        </div>
+
+
       <div className="container">
         <div class="column">
           <ul class="price">
@@ -41,8 +76,8 @@ export default function Home() {
 
         <div class="column plus">
           <ul class="price">
-            <li class="header">PLUS</li>
-            <li class="grey">$ 4/mo</li>
+          <li class="grey">{data.Plans[0].Currency}</li>
+            <li class="grey">$ 0/mo</li>
             <li><div className="arrow">&#8594;</div>   1 user</li>
             <li><div className="arrow">&#8594;</div>   5 GB storage*</li>
             <li><div className="arrow">&#8594;</div>   5 address*</li>
