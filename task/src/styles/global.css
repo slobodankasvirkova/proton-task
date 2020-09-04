@@ -2,61 +2,79 @@
     box-sizing: border-box;
   }
 
-  .container {
-    width: 100%;
-    display: table;
+  .pricing {
+    display: flex;
   }
 
-  /* Create four columns of equal width */
+  .select-div {
+  text-align: end;
+  margin: 5px;
+  }
+
   .column {
-    display: table-cell;
+    flex: 1;
     width: 25%;
   }
+
+  p {
+    text-align: center;
+  }
+
+ .description {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 60px;
+  }
+
+  .p-free {
+    text-align: center;
+    margin-top: 70px;
+  }
   
-  /* Style the list */
   .price {
     list-style-type: none;
     border: 1px solid #eee;
     margin: 0;
-    padding: 0;
+    padding: 20px;
     -webkit-transition: 0.3s;
     transition: 0.3s;
   }
   
-  /* Add shadows on hover */
   .price:hover {
     box-shadow: 0 8px 12px 0 rgba(0,0,0,0.2)
   }
   
-  /* Pricing header */
   .price .header {
     color: black;
     font-size: 25px;
     text-align: center;
+    margin: 20px;
   }
-  
-  /* List items */
+
   .price li {
-      padding: 10px;
+      padding: 1px;
   }
-  
-  /* Grey list item */
+
   .price .grey {
-    font-size: 20px;
+    font-size: 28px;
     text-align: center;
   }
-  
-  /* The "Sign Up" button */
+
+  .li-span {
+    font-size: 15px;
+  }
+
   .button {
     background-color: #4682b4;
     border-radius: 3px;
     border: none;
     color: white;
     padding: 10px 25px;
-    margin: 50px 0px 0px 0px;
+    margin: 50px;
     text-align: center;
     text-decoration: none;
     font-size: 18px;
+    display: inline-block;
   }
   
   .arrow {
@@ -65,20 +83,27 @@
   }
 
   .free {
-    margin: 0px 0px 105px 0px;
+    margin: 0px 0px 80.5px 0px;
+  }
+
+  .professional {
+    margin: 0px 0px -5px 0px;
   }
 
   .visionary {
-    margin:0px 0px -8.5px 0px;
+    margin: 0px 0px -20px 0px;
   }
 
-  
+  .p-plus {
+    display: block;
+    margin-top: -19px;
+    margin-bottom: -10px;
+    color: limegreen;
+  }
 
-  /* Change the width of the three columns to 100%
-  (to stack horizontally on small screens) */
   @media only screen and (max-width: 600px) {
     .column {
-        display: block; 
+      display: block; 
       width: 100%;
     }
     .price li {
