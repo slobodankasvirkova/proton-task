@@ -32,6 +32,7 @@ export default function Home() {
       const plans = await requestPlans(currency);
       setData(plans.Plans);
     }
+    
     fetchData();
   }, [currency]);
 
